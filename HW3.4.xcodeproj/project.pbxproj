@@ -13,6 +13,7 @@
 		18924FCD2672A8750052FF29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18924FCC2672A8750052FF29 /* Assets.xcassets */; };
 		18924FD02672A8750052FF29 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18924FCF2672A8750052FF29 /* Preview Assets.xcassets */; };
 		18924FD32672A8750052FF29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18924FD12672A8750052FF29 /* LaunchScreen.storyboard */; };
+		18924FDB2672A9740052FF29 /* ValueSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18924FDA2672A9740052FF29 /* ValueSlider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		18924FCF2672A8750052FF29 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		18924FD22672A8750052FF29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18924FD42672A8750052FF29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18924FDA2672A9740052FF29 /* ValueSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueSlider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				18924FC62672A8740052FF29 /* AppDelegate.swift */,
 				18924FC82672A8740052FF29 /* SceneDelegate.swift */,
 				18924FCA2672A8740052FF29 /* ContentView.swift */,
+				18924FDA2672A9740052FF29 /* ValueSlider.swift */,
 				18924FCC2672A8750052FF29 /* Assets.xcassets */,
 				18924FD12672A8750052FF29 /* LaunchScreen.storyboard */,
 				18924FD42672A8750052FF29 /* Info.plist */,
@@ -145,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18924FDB2672A9740052FF29 /* ValueSlider.swift in Sources */,
 				18924FC72672A8740052FF29 /* AppDelegate.swift in Sources */,
 				18924FC92672A8740052FF29 /* SceneDelegate.swift in Sources */,
 				18924FCB2672A8740052FF29 /* ContentView.swift in Sources */,
