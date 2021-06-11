@@ -10,24 +10,30 @@ import SwiftUI
 struct ValueSlider: UIViewRepresentable {
     
     @Binding var alpha: Double
-    @Binding var value: Int
+    @Binding var currentValue: Double
     
     func makeUIView(context: Context) -> UISlider {
         let slider = UISlider()
         slider.maximumValue = 100
         slider.minimumValue = 0
-        slider.alpha = CGFloat(alpha)
-        slider.value = Float(value)
+        slider.thumbTintColor = .red
+        slider.value = 20
+        slider.addTarget(
+            context.coordinator,
+            action: #selector(Coordinator.didTapDone),
+            for: .allTouchEvents)
+        
         
         return slider
     }
     
     func updateUIView(_ uiView: UISlider, context: Context) {
         uiView.alpha = CGFloat(alpha)
+        uiView.value = Float(currentValue)
     }
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(alpha: $alpha, value: $value)
+        Coordinator(alpha: $alpha, currentValue: $currentValue)
     }
     
     
@@ -36,18 +42,23 @@ struct ValueSlider: UIViewRepresentable {
 extension ValueSlider {
     class  Coordinator: NSObject {
         @Binding var alpha: Double
-        @Binding var value: Int
+        @Binding var currentValue: Double
         
-        init(alpha: Binding<Double>, value: Binding<Int>) {
+        init(alpha: Binding<Double>, currentValue: Binding<Double>) {
             self._alpha = alpha
-            self._value = value
+            self._currentValue = currentValue
+        }
+        
+        @objc func didTapDone(_ sender: UISlider) {
+            alpha = Double(sender.alpha)
+            currentValue = Double(sender.value)
         }
     }
 }
 
 struct SwiftUIView_Preview: PreviewProvider {
     static var previews: some View {
-        ValueSlider(alpha: .constant(0.8), value: .constant(50))
+        ValueSlider(alpha: .constant(0.8), currentValue: .constant(50.0))
     }
 
     
