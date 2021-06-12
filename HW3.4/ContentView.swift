@@ -11,7 +11,8 @@ struct ContentView: View {
     @State private var targetValue = Int.random(in: 0...100)
     @State private var currentValue = Double.random(in: 0...100)
     @State private var alpha = 1.0
-    @State private var vvv = ""
+    @State private var alertPresented = false
+   
     
     var body: some View {
         VStack {
@@ -19,14 +20,31 @@ struct ContentView: View {
             HStack {
                 Text("0")
                 ValueSlider(alpha: $alpha, currentValue: $currentValue)
+                    .onChange(of: currentValue, perform: { _ in
+                        alpha = Double(computeScore())/100
+                    })
                 Text("100")
             }
-            Text("Slider value: \(vvv)")
-                .onChange(of: currentValue, perform: { value in
-                    vvv = String(value)
-                })
+            Button("Check result") {
+                alertPresented.toggle()
+            }
+            .alert(isPresented: $alertPresented) {
+                Alert(title: Text("You're score"), message: Text("\(computeScore())"))
+            }
+            Button("New game") {
+                targetValue = Int.random(in: 0...100)
+            }
+            Text("\(lround(currentValue))")
+               
         }
-            
+        .padding()
+        
+    }
+    
+    
+    private func computeScore() -> Int {
+        let difference = abs(targetValue - lround(currentValue))
+        return 100 - difference
     }
 }
 

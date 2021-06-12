@@ -13,11 +13,14 @@ struct ValueSlider: UIViewRepresentable {
     @Binding var currentValue: Double
     
     func makeUIView(context: Context) -> UISlider {
+       
+        
         let slider = UISlider()
         slider.maximumValue = 100
         slider.minimumValue = 0
-        slider.thumbTintColor = .red
-        slider.value = 20
+        //slider.thumbTintColor = UIColor(red: 1, green: 0.1, blue: 0.1, alpha: CGFloat(thumbAlpha))
+        
+        
         slider.addTarget(
             context.coordinator,
             action: #selector(Coordinator.didTapDone),
@@ -28,7 +31,8 @@ struct ValueSlider: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UISlider, context: Context) {
-        uiView.alpha = CGFloat(alpha)
+      // uiView.alpha = CGFloat(alpha)
+        uiView.thumbTintColor = UIColor(red: 1, green: 0.1, blue: 0.1, alpha: CGFloat(alpha))
         uiView.value = Float(currentValue)
     }
     
