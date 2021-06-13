@@ -10,32 +10,30 @@ import SwiftUI
 struct ContentView: View {
     @State private var targetValue = Int.random(in: 0...100)
     @State private var currentValue = Double.random(in: 0...100)
-    @State private var alpha = 1.0
     @State private var alertPresented = false
-   
+    private var alpha: Double { Double(computeScore())/100 }
+    
     
     var body: some View {
         VStack {
-            Text("Move you're slider maximum closer to: \(targetValue)")
+            Text("Move you're slider as close to: \(targetValue)")
             HStack {
                 Text("0")
-                ValueSlider(alpha: $alpha, currentValue: $currentValue)
-                    .onChange(of: currentValue, perform: { _ in
-                        alpha = Double(computeScore())/100
-                    })
+                ValueSlider(currentValue: $currentValue, alpha: alpha)
                 Text("100")
             }
+            
             Button("Check result") {
                 alertPresented.toggle()
             }
             .alert(isPresented: $alertPresented) {
                 Alert(title: Text("You're score"), message: Text("\(computeScore())"))
             }
+            .padding()
+            
             Button("New game") {
                 targetValue = Int.random(in: 0...100)
             }
-            Text("\(lround(currentValue))")
-               
         }
         .padding()
         
